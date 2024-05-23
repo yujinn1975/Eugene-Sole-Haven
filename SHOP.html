@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nike Shop by Yujin</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url(https://free4kwallpapers.com/uploads/originals/2021/01/29/nike-swoosh-wave-wallpaper.png);
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            color: #7C4700; 
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            overflow-x: auto; 
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            overflow: hidden;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+            background-color: rgba(0, 0, 0, 0.1);
+        }
+        th {
+            background-color: #EECEAC;
+        }
+        tr:hover {
+            background-color: #997950;
+        }
+        .add-to-cart-btn {
+            background-color: #964B00;
+            color: #fff;
+            padding: 8px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .add-to-cart-btn:hover {
+            background-color: #997950;
+        }
+        .shoe-image {
+            max-width: 50px;
+            max-height: 50px;
+        }
+        h1 {
+            text-align: center;
+        }
+        .about-links {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .about-links ul {
+            padding: 0;
+            list-style-type: none;
+        }
+        .about-links ul li {
+            display: inline;
+            margin: 0 10px;
+        }
+        .about-links ul li a {
+            color: #EECEAC;
+            text-decoration: none;
+        }
+        .about-links ul li a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+<div class="cart-container">
+        <h2>Cart</h2>
+        <ul id="cart-items"></ul>
+        <p>Total: <span id="total">₱0.00</span></p>
+        <button id="buy-btn">Buy</button>
+    </div>
+
+    <!-- Receipt Container -->
+    <div id="receipt-container" class="receipt-container">
+        <button onclick="closeReceipt()">Close</button>
+        <ul id="receipt-items"></ul>
+    </div>
+    <div class="container">
+        <h1>Nike Shop by Yujin</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Category</th>
+                    <th>Product Details</th>
+                    <th>Price</th>
+                    <th>Image</th>
+                    <th>Add to Cart</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>UNISEX</td>
+                    <td>Nike Air Max</td>
+                    <td>₱8,395</td>
+                    <td><img src="C:\Users\Ortiz\Downloads\air-max-97-shoes-EBZrb8.png" alt="Nike Air Max" class="shoe-image"></td>
+                    <td><button class="add-to-cart-btn">Add to Cart</button></td>
+                </tr>
+                <tr>
+                    <td>UNISEX</td>
+                    <td>Nike Air Force 1</td>
+                    <td>₱4,500</td>
+                    <td><img src="C:\Users\Ortiz\Downloads\air-force-1-07-lv8-shoes-hHz3rg.jfif" alt="Nike Air Force 1" class="shoe-image"></td>
+                    <td><button class="add-to-cart-btn">Add to Cart</button></td>
+                </tr>
+                <tr>
+                    <td>UNISEX</td>
+                    <td>Nike Air Jordan</td>
+                    <td>₱10,500</td>
+                    <td><img src="C:\Users\Ortiz\Downloads\air-jordan-1-2022-lost-and-found-chicago-the-inspiration-behind-the-design.jpg" alt="Nike Air Jordan" class="shoe-image"></td>
+                    <td><button class="add-to-cart-btn">Add to Cart</button></td>
+                </tr>
+                <tr>
+                    <td>UNISEX</td>
+                    <td>Nike Air Zoom</td>
+                    <td>₱9,895</td>
+                    <td><img src="C:\Users\Ortiz\Downloads\air-zoom-victory-tour-3-golf-shoes-5X9wGF.png" alt="Nike Air Zoom" class="shoe-image"></td>
+                    <td><button class="add-to-cart-btn">Add to Cart</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+	
+	<center><audio controls>
+        <source src="C:\Users\Ortiz\Downloads\Y2Meta.id Nike (Official Music Video).mp3" type="audio/mpeg">
+    </audio></center>
+    
+    <center><video width="320" height="240" controls>
+        <source src="C:\Users\Ortiz\Downloads\Nike (Official Music Video).mp4" type="video/mp4">
+    </video></center>
+	
+    <div class="about-links">
+        <ul>
+            <li><a href="C:\Users\Ortiz\Downloads\ORTIZ - WEBSITE\index.html">HOME</a></li>
+            <li><a href="C:\Users\Ortiz\Downloads\ORTIZ - WEBSITE\ABOUT US.html">ABOUT US</a></li>
+            <li><a href="C:\Users\Ortiz\Downloads\ORTIZ - WEBSITE\CONTACT US.html">CONTACT US</a></li>
+        </ul>
+    </div>
+	<script>
+        function updateCart() {
+    let cartList = document.getElementById('cart-items');
+    cartList.innerHTML = '';
+    let total = 0;
+    cartItems.forEach((item, index) => {
+        let li = document.createElement('li');
+        li.className = 'cart-item';
+        li.innerHTML = `${item.name} - ₱${item.price.toFixed(2)}`;
+        let removeBtn = document.createElement('button');
+        removeBtn.textContent = 'X';
+        removeBtn.className = 'remove-btn';
+        removeBtn.onclick = function() {
+            cartItems.splice(index, 1);
+            updateCart();
+        };
+        li.appendChild(removeBtn);
+        cartList.appendChild(li);
+        total += item.price;
+    });
+    let totalElement = document.getElementById('total');
+    totalElement.textContent = `₱${total.toFixed(2)}`;
+}
+
+function buyItems() {
+    var receipt = generateReceipt();
+    displayReceipt(receipt);
+    cartItems = [];
+    updateCart();
+    alert('Thank you for buying in Eugene Sole Haven! Hope to see you again. <3');
+}
+    </script>
+	
+</body>
+</html>

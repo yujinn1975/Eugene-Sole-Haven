@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eugene's Sole Haven</title>
+    <style>
+        body {
+            font-family: Arial, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url(https://free4kwallpapers.com/uploads/originals/2021/01/29/nike-swoosh-wave-wallpaper.png);
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: #FFFADA;
+        }
+        a {
+            color: orange;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        a:hover, a:focus {
+            color: #9A7B4F;
+        }
+        .header {
+            text-align: center;
+            padding: 55px 0;
+            background-color: rgba(255, 255, 255, 0.3);
+            color: #FFFADA;
+            font-size: 24px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: bold;
+            position: relative;
+        }
+        .logo {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            width: 80px;
+            height: auto;
+            border-radius: 50%;
+        }
+        .tagline {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 18px;
+            font-style: italic;
+        }
+        .search-container {
+            text-align: center;
+            padding-top: 20px;
+        }
+        .search-box,
+        .email-input {
+            width: 250px;
+            padding: 10px;
+            border: 2px solid #FFFADA;
+            border-radius: 20px;
+            background-color: rgba(255, 255, 255, 0.5);
+            color: #FFFADA;
+            font-size: 16px;
+            outline: none;
+            margin-right: 10px;
+        }
+        .search-box::placeholder,
+        .email-input::placeholder {
+            color: #FFFADA;
+        }
+        .search-button,
+        .subscribe-button,
+        .cta-button {
+            background-color: transparent;
+            color: orange;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: color 0.3s;
+            text-decoration: none;
+            border: 2px solid orange;
+            border-radius: 20px;
+        }
+        .search-button:hover,
+        .subscribe-button:hover,
+        .cta-button:hover {
+            color: #9A7B4F;
+            background-color: #FFFADA;
+        }
+        .top-right {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            align-items: center;
+        }
+        .cart,
+        .account {
+            background-color: rgba(255, 255, 255, 0.5);
+            color: #FFFADA;
+            padding: 10px 20px;
+            border-radius: 20px;
+            margin-left: 10px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        .cart:hover, 
+        .account:hover {
+            background-color: #9A7B4F;
+        }
+        .image-container {
+            display: inline-block;
+            margin: 10px;
+            text-align: center;
+        }
+        .shoe-image {
+            width: 250px;
+            height: auto;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        .shoe-name {
+            color: #FFFADA;
+            margin-top: 5px;
+            font-size: 16px;
+        }
+        main {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .container {
+            display: inline-block;
+            margin: 0 10px;
+        }
+        .section {
+            padding: 40px 20px;
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.7);
+            margin: 20px 0;
+        }
+        .section h2 {
+            margin-bottom: 20px;
+        }
+        footer {
+            padding: 20px;
+            text-align: center;
+            color: #FFFADA;
+        }
+        footer h2 {
+            margin-bottom: 20px;
+        }
+        footer input[type="email"] {
+            width: 200px;
+        }
+        footer ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        footer ul li {
+            display: inline-block;
+            margin-right: 10px;
+        }
+        footer ul li a {
+            color: #FFFADA;
+            text-decoration: none;
+        }
+        .cart-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .cart-container h2 {
+            margin-top: 0;
+        }
+        .cart-container ul {
+            padding: 0;
+            list-style-type: none;
+        }
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+        }
+        .remove-btn {
+            background-color: #dc3545;
+            border: none;
+            color: white;
+            cursor: pointer;
+            padding: 5px;
+        }
+        .remove-btn:hover {
+            background-color: #c82333;
+        }
+        #buy-btn {
+            background-color: #28a745;
+            border: none;
+            color: white;
+            cursor: pointer;
+            padding: 10px 20px;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        #buy-btn:hover {
+            background-color: #218838;
+        }
+        .receipt-container {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            border: 2px solid black;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            z-index: 999;
+            color: black;
+        }
+        .receipt {
+            text-align: center;
+        }
+        .receipt h2 {
+            margin-bottom: 10px;
+        }
+        .receipt-items {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 10px;
+        }
+        .receipt-items li {
+            margin-bottom: 5px;
+        }
+        #total-receipt {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <img src="C:\Users\Ortiz\Downloads\6f833e1079d26a8dcd0469410b2db3eb.jpg" alt="Nike Logo" class="logo">
+        <div class="tagline">To see is To Believe !</div>
+    </header>
+    <div class="search-container">
+        <input type="text" class="search-box" placeholder="Search...">
+        <button type="submit" class="search-button">Search</button>
+    </div>
+    <div class="top-right">
+        <a href="#" class="cart">Cart</a>
+        <a href="#" class="account">Account</a>
+    </div>
+    <main>
+        <div class="image-container">
+            <a href="#"><img src="C:\Users\Ortiz\Downloads\nike-WhiteWhite-Kobe-Ad-Tb-Basketball-Shoes.jpeg" class="shoe-image" alt="Shoe 1"></a>
+            <div class="shoe-name">Nike White Kobe</div>
+            <button class="add-to-cart" data-name="Nike White Kobe" data-price="2599">Add to Cart</button>
+        </div>
+        <div class="image-container">
+            <a href="#"><img src="C:\Users\Ortiz\Downloads\nike-BlackGoldMetallic-Air-Precision-2-Basketball-Shoes.jpeg" class="shoe-image" alt="Shoe 3"></a>
+            <div class="shoe-name">Nike Black Gold Metallic Air Precision</div>
+            <button class="add-to-cart" data-name="Nike Black Gold Metallic Air Precision" data-price="3499">Add to Cart</button>
+        </div>
+        <div class="image-container">
+            <a href="#"><img src="C:\Users\Ortiz\Downloads\5.webp" alt="Shoe 4" class="shoe-image"></a>
+            <div class="shoe-name">Nike Precision 5</div>
+            <button class="add-to-cart" data-name="Nike Precision 5" data-price="2999">Add to Cart</button>
+        </div>
+    </main>
+
+    
+	<div><center><section id="ABOUT US" class="container">
+            <a href="C:\Users\Ortiz\Downloads\ORTIZ - WEBSITE\ABOUT US.html" class="cta-button">About us !</a>
+        </section>
+        
+        <section id="SHOP" class="container">
+            <a href="C:\Users\Ortiz\Downloads\ORTIZ - WEBSITE\SHOP.html" class="cta-button">More Shop !</a>
+        </section>
+        
+        <section id="CONTACT US" class="container">
+            <a href="C:\Users\Ortiz\Downloads\ORTIZ - WEBSITE\CONTACT US.html" class="cta-button">Contact us !</a>
+        </section></div></center>  
+
+    <div class="cart-container" id="cart">
+        <h2>Cart</h2>
+        <ul id="cart-items"></ul>
+        <p>Total: <span id="total">₱0.00</span></p>
+        <button id="buy-btn">Buy</button>
+    </div>
+
+    <div class="receipt-container" id="receipt-container">
+        <div class="receipt">
+            <h2>Receipt</h2>
+            <ul class="receipt-items" id="receipt-items"></ul>
+            <button onclick="closeReceipt()">Close</button>
+        </div>
+    </div>
+
+    <footer>
+        <h2>Drop your Email To Notify You!</h2>
+        <form>
+            <input type="email" name="email" class="email-input" placeholder="Enter Email">
+            <button type="submit" class="subscribe-button">SUBSCRIBE!</button>
+            <ul><section><div>
+                <li><a href="#">Shop Men's</a></li>
+                <li><a href="#">Shop Women's</a></li>
+                <li><a href="#">Terms & Conditions</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+            </ul></section></div>
+			
+        </form>
+    </footer>
+
+    <script>
+        let cartItems = [];
+
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', () => {
+                const name = button.getAttribute('data-name');
+                const price = parseFloat(button.getAttribute('data-price'));
+                addToCart(name, price);
+            });
+        });
+
+        document.getElementById("buy-btn").addEventListener("click", buyItems);
+
+        function addToCart(productName, price) {
+            cartItems.push({ name: productName, price: price });
+            updateCart();
+        }
+
+        function updateCart() {
+            let cartList = document.getElementById('cart-items');
+            cartList.innerHTML = '';
+            let total = 0;
+            cartItems.forEach((item, index) => {
+                let li = document.createElement('li');
+                li.className = 'cart-item';
+                li.innerHTML = `${item.name} - ₱${item.price.toFixed(2)}`;
+                let removeBtn = document.createElement('button');
+                removeBtn.textContent = 'X';
+                removeBtn.className = 'remove-btn';
+                removeBtn.onclick = function() {
+                    cartItems.splice(index, 1);
+                    updateCart();
+                };
+                li.appendChild(removeBtn);
+                cartList.appendChild(li);
+                total += item.price;
+            });
+            let totalElement = document.getElementById('total');
+            totalElement.textContent = `₱${total.toFixed(2)}`;
+        }
+
+        function buyItems() {
+            var receipt = generateReceipt();
+            displayReceipt(receipt);
+            cartItems = [];
+            updateCart();
+            alert('Thank you for buying in Eugene Sole Haven! Hope to see you again. <3');
+        }
+
+        function generateReceipt() {
+            var receipt = "";
+            cartItems.forEach((item) => {
+                receipt += `<li>${item.name} - ₱${item.price.toFixed(2)}</li>`;
+            });
+            receipt += `<li id="total-receipt">Total: ₱${getTotal().toFixed(2)}</li>`;
+            return receipt;
+        }
+
+        function closeReceipt() {
+            var receiptContainer = document.getElementById('receipt-container');
+            receiptContainer.style.display = 'none';
+        }
+
+        function displayReceipt(receipt) {
+            var receiptContainer = document.getElementById('receipt-container');
+            var receiptItems = document.getElementById('receipt-items');
+            receiptItems.innerHTML = '';
+            receiptItems.innerHTML = receipt;
+            receiptContainer.style.display = 'block';
+        }
+
+        function getTotal() {
+            let total = 0;
+            cartItems.forEach((item) => {
+                total += item.price;
+            });
+            return total;
+        }
+    </script>
+</body>
+</html>
